@@ -1,7 +1,6 @@
 /* global global, xblocks */
 /* jshint strict: false */
 
-// вынести
 xblocks.utils.microtask = (function() {
     var iterations = 0;
     var callbacks = [];

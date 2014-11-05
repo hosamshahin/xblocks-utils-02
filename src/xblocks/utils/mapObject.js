@@ -1,7 +1,6 @@
 /* global xblocks */
 /* jshint strict: false */
 
-// вынести
 /**
  * @param {object} from
  * @param {function} [callback]
@@ -16,7 +15,7 @@ xblocks.utils.mapObject = function(from, callback) {
         var descr = Object.getOwnPropertyDescriptor(from, property);
         var map = callback && callback(property, descr);
         if (xblocks.utils.type(map) === 'object') {
-            props[map.name] = map.descr;
+            props[ map.name ] = map.descr;
             fill = true;
         }
     });

@@ -1,9 +1,8 @@
 /* global xblocks */
 /* jshint strict: false */
 
-// вынести
 xblocks.utils.debounce = function(callback, delay, scope) {
-    delay = delay || 250;
+    delay = Number(delay || 250);
     var timer = null;
 
     return function() {

@@ -1,14 +1,13 @@
 /* global xblocks */
 /* jshint strict: false */
 
-// вынести
-xblocks.utils.event._clickWhich = {
+xblocks.event._clickWhich = {
     1: 'left',
     2: 'center',
     3: 'right'
 };
 
-xblocks.utils.event.click = function(which, callback) {
+xblocks.event.filterClick = function(which, callback) {
     which = Array.isArray(which) ? which : [ which ];
 
     return function(event) {
@@ -29,7 +28,7 @@ xblocks.utils.event.click = function(which, callback) {
             }
         }
 
-        whichEvt = xblocks.utils.event._clickWhich[ whichEvt ];
+        whichEvt = xblocks.event._clickWhich[ whichEvt ];
 
         if (which.indexOf(whichEvt) !== -1) {
             callback.call(this, event);

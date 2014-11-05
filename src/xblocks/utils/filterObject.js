@@ -1,7 +1,6 @@
 /* global xblocks */
 /* jshint strict: false */
 
-// вынести
 /**
  * @param {object} from
  * @param {function} [callback]
@@ -15,7 +14,7 @@ xblocks.utils.filterObject = function(from, callback) {
     Object.keys(from).forEach(function(property) {
         var descr = Object.getOwnPropertyDescriptor(from, property);
         if (callback && callback(property, descr)) {
-            props[property] = descr;
+            props[ property ] = descr;
             fill = true;
         }
     });

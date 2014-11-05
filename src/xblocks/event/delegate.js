@@ -1,8 +1,7 @@
 /* global xblocks */
 /* jshint strict: false */
 
-// вынести
-xblocks.utils.event.delegate = function(selector, callback) {
+xblocks.event.delegate = function(selector, callback) {
 
     return function(event) {
         var target = event.target || event.srcElement;

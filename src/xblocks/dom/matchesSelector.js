@@ -1,7 +1,6 @@
-/* global xblocks */
+/* global xblocks, indexOf */
 /* jshint strict: false */
 
-// вынести
 xblocks.dom.matchesSelector = (function() {
     var ElementPrototype = Element.prototype;
     var matches = ElementPrototype.matches ||
@@ -11,7 +10,7 @@ xblocks.dom.matchesSelector = (function() {
         ElementPrototype.msMatchesSelector ||
         ElementPrototype.oMatchesSelector ||
         function(selector) {
-            return (Array.prototype.indexOf.call((this.parentNode || this.ownerDocument).querySelectorAll(selector), this) !== -1);
+            return (indexOf.call((this.parentNode || this.ownerDocument).querySelectorAll(selector), this) !== -1);
         };
 
     return function(element, selector) {

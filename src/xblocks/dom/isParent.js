@@ -1,7 +1,6 @@
 /* global xblocks, global */
 /* jshint strict: false */
 
-// вынести
 xblocks.dom.isParent = (function() {
     var root = global.document.documentElement;
 

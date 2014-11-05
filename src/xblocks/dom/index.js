@@ -1,7 +1,6 @@
-/* global xblocks, global */
+/* global xblocks, global, indexOf */
 /* jshint strict: false */
 
-// вынести
 xblocks.dom.index = function(selector, element, context) {
-    return Array.prototype.indexOf.call((context || global.document).querySelectorAll(selector), element);
+    return indexOf.call((context || global.document).querySelectorAll(selector), element);
 };
