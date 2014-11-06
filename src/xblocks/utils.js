@@ -13,3 +13,4 @@
 
 // Other
 /*! borschik:include:utils/uid.js */
+/*! borschik:include:utils/table.js */
