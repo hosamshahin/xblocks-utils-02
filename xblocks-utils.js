@@ -290,6 +290,140 @@ xblocks.dom.matchesSelector = (function() {
 
 /* xblocks/dom/matchesSelector.js end */
 
+/* xblocks/dom/eachInnerFollowing.js begin */
+/**
+ * Проход по всем потомкам в прямом порядке (от певой до последней)
+ */
+xblocks.dom.eachInnerFollowing = function(node, callback) {
+    var stack = [ node ];
+    var item;
+    var cbcall;
+    var childsLength;
+
+    while ((item = stack.pop())) {
+        cbcall = callback && callback(item, stack);
+
+        if (typeof(cbcall) !== 'undefined' && !cbcall) {
+            return false;
+
+        } else if (cbcall === 'next') {
+            continue;
+        }
+
+        if (item.nodeType !== 1) {
+            continue;
+        }
+
+        if (!item.hasChildNodes()) {
+            continue;
+        }
+
+        childsLength = item.childNodes.length;
+
+        while (childsLength--) {
+            stack.push(item.childNodes[childsLength]);
+        }
+    }
+
+    return true;
+};
+
+/* xblocks/dom/eachInnerFollowing.js end */
+
+/* xblocks/dom/eachInnerPrevious.js begin */
+/**
+ * Проход по всем потомкам в обратном порядке (от последней до первой)
+ */
+xblocks.dom.eachInnerPrevious = function(node, callback) {
+    var stack = [ node ];
+    var item;
+    var cbcall;
+    var i;
+    var childsLength;
+
+    while ((item = stack.pop())) {
+        cbcall = callback && callback(item, stack);
+
+        if (typeof(cbcall) !== 'undefined' && !cbcall) {
+            return false;
+
+        } else if (cbcall === 'next') {
+            continue;
+        }
+
+        if (item.nodeType !== 1) {
+            continue;
+        }
+
+        if (!item.hasChildNodes()) {
+            continue;
+        }
+
+        childsLength = item.childNodes.length;
+        i = 0;
+
+        for (; i < childsLength; i++) {
+            stack.push(item.childNodes[i]);
+        }
+    }
+
+    return true;
+};
+
+/* xblocks/dom/eachInnerPrevious.js end */
+
+/* xblocks/dom/eachBefore.js begin */
+xblocks.dom.eachBefore = function(node, callback, context, inner) {
+    inner = (typeof(inner) === 'undefined' ? true : Boolean(inner));
+    var prev;
+    var cbcall;
+
+    do {
+        if (context && !xblocks.dom.isParent(context, node)) {
+            return;
+        }
+
+        prev = node;
+
+        while ((prev = prev.previousSibling)) {
+            cbcall = inner ? xblocks.dom.eachInnerPrevious(prev, callback) : (callback && callback(prev));
+
+            if (typeof(cbcall) !== 'undefined' && !cbcall) {
+                return false;
+            }
+        }
+
+    } while ((node = node.parentNode));
+};
+
+/* xblocks/dom/eachBefore.js end */
+
+/* xblocks/dom/eachAfter.js begin */
+xblocks.dom.eachAfter = function(node, callback, context, inner) {
+    inner = (typeof(inner) === 'undefined' ? true : Boolean(inner));
+    var next;
+    var cbcall;
+
+    do {
+        if (context && !xblocks.dom.isParent(context, node)) {
+            return;
+        }
+
+        next = node;
+
+        while ((next = next.nextSibling)) {
+            cbcall = inner ? xblocks.dom.eachInnerFollowing(next, callback) : (callback && callback(next));
+
+            if (typeof(cbcall) !== 'undefined' && !cbcall) {
+                return false;
+            }
+        }
+
+    } while ((node = node.parentNode));
+};
+
+/* xblocks/dom/eachAfter.js end */
+
 
 /* xblocks/dom.js end */
 
