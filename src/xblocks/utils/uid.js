@@ -1,4 +1,4 @@
-/* global xblocks */
+/* global xblocks, global */
 /* jshint strict: false */
 
 /**
@@ -6,5 +6,5 @@
  * @returns {string}
  */
 xblocks.utils.uid = function() {
-    return Math.floor((1 + Math.random()) * 0x10000000).toString(36);
+    return global.Math.floor((1 + global.Math.random()) * 0x10000000).toString(36);
 };

@@ -1,4 +1,4 @@
-/* global xblocks */
+/* global xblocks, global */
 /* jshint strict: false */
 
 xblocks.utils.throttle = function(callback, delay, scope) {
@@ -12,9 +12,9 @@ xblocks.utils.throttle = function(callback, delay, scope) {
         var args = arguments;
 
         if (last && now < last + delay) {
-            clearTimeout(timer);
+            global.clearTimeout(timer);
 
-            timer = setTimeout(function() {
+            timer = global.setTimeout(function() {
                 last = now;
                 callback.apply(context, args);
             }, delay);

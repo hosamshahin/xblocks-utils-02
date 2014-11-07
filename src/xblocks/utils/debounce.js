@@ -1,4 +1,4 @@
-/* global xblocks */
+/* global xblocks, global */
 /* jshint strict: false */
 
 xblocks.utils.debounce = function(callback, delay, scope) {
@@ -9,9 +9,9 @@ xblocks.utils.debounce = function(callback, delay, scope) {
         var context = scope || this;
         var args = arguments;
 
-        clearTimeout(timer);
+        global.clearTimeout(timer);
 
-        timer = setTimeout(function() {
+        timer = global.setTimeout(function() {
             callback.apply(context, args);
         }, delay);
     };

@@ -20,7 +20,7 @@
     /* xblocks/utils.js begin */
 // Time
 /* xblocks/utils/debounce.js begin */
-/* global xblocks */
+/* global xblocks, global */
 /* jshint strict: false */
 
 xblocks.utils.debounce = function(callback, delay, scope) {
@@ -31,9 +31,9 @@ xblocks.utils.debounce = function(callback, delay, scope) {
         var context = scope || this;
         var args = arguments;
 
-        clearTimeout(timer);
+        global.clearTimeout(timer);
 
-        timer = setTimeout(function() {
+        timer = global.setTimeout(function() {
             callback.apply(context, args);
         }, delay);
     };
@@ -42,7 +42,7 @@ xblocks.utils.debounce = function(callback, delay, scope) {
 /* xblocks/utils/debounce.js end */
 
 /* xblocks/utils/throttle.js begin */
-/* global xblocks */
+/* global xblocks, global */
 /* jshint strict: false */
 
 xblocks.utils.throttle = function(callback, delay, scope) {
@@ -56,9 +56,9 @@ xblocks.utils.throttle = function(callback, delay, scope) {
         var args = arguments;
 
         if (last && now < last + delay) {
-            clearTimeout(timer);
+            global.clearTimeout(timer);
 
-            timer = setTimeout(function() {
+            timer = global.setTimeout(function() {
                 last = now;
                 callback.apply(context, args);
             }, delay);
@@ -206,7 +206,7 @@ xblocks.utils.isWindow = function(obj) {
 
 // Other
 /* xblocks/utils/uid.js begin */
-/* global xblocks */
+/* global xblocks, global */
 /* jshint strict: false */
 
 /**
@@ -214,7 +214,7 @@ xblocks.utils.isWindow = function(obj) {
  * @returns {string}
  */
 xblocks.utils.uid = function() {
-    return Math.floor((1 + Math.random()) * 0x10000000).toString(36);
+    return global.Math.floor((1 + global.Math.random()) * 0x10000000).toString(36);
 };
 
 /* xblocks/utils/uid.js end */
