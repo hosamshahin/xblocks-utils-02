@@ -1,6 +1,6 @@
 {
     "name": "xblocks-utils",
-    "description": "Helper functions for custom elements",
+    "description": "Helper functions for xblocks custom elements",
     "version": "0.0.1",
     "keywords": [
         "xblocks",

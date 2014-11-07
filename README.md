@@ -1,4 +1,4 @@
 xblocks-utils
 =============
 
-Helper functions for custom elements
+Helper functions for xblocks custom elements
