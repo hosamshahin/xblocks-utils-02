@@ -13,3 +13,4 @@ build
 test
 Makefile
 bower.json
+karma.conf.js

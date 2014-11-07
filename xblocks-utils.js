@@ -399,22 +399,32 @@ xblocks.utils.Table.prototype = {
             return;
         }
 
-        this._originalEvent = event;
+        var action;
 
         switch (event.keyCode) {
             case 37: // ArrowLeft
-                this._onArrowLeft();
+                action = '_onArrowLeft';
                 break;
             case 38: // ArrowUp
-                this._onArrowUp();
+                action = '_onArrowUp';
                 break;
             case 39: // ArrowRight
-                this._onArrowRight();
+                action = '_onArrowRight';
                 break;
             case 40: // ArrowDown
-                this._onArrowDown();
+                action = '_onArrowDown';
                 break;
         }
+
+        if (!action) {
+            return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+        this._originalEvent = event;
+
+        this[ action ]();
     },
 
     _onMouseAction: function(event) {
