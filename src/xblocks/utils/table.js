@@ -1,3 +1,4 @@
+/* global pop, slice */
 
 xblocks.utils.Table = function(node, options) {
     this._options = xblocks.utils.merge({
@@ -98,7 +99,7 @@ xblocks.utils.Table.prototype = {
     },
 
     _colLast: function() {
-        return Array.prototype.pop.call(Array.prototype.slice.call(this._node.querySelectorAll(this._options.col))) || this._node;
+        return pop.call(slice.call(this._node.querySelectorAll(this._options.col))) || this._node;
     },
 
     _colMatchIterate: function(data, element) {
@@ -125,7 +126,7 @@ xblocks.utils.Table.prototype = {
     },
 
     _rowLast: function(col) {
-        return Array.prototype.pop.call(Array.prototype.slice.call(col.querySelectorAll(this._options.row)));
+        return pop.call(slice.call(col.querySelectorAll(this._options.row)));
     },
 
     _rowMatchIterate: function(data, element) {

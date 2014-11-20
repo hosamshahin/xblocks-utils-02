@@ -15,6 +15,8 @@
     xblocks.event = xblocks.event || {};
 
     var indexOf = Array.prototype.indexOf;
+    var pop = Array.prototype.pop;
+    var slice = Array.prototype.slice;
     var hasOwnProperty = Object.prototype.hasOwnProperty;
 
     /*! borschik:include:xblocks/utils.js */
