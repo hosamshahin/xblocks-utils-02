@@ -28,12 +28,12 @@
     "devDependencies": {
         "borschik": "1.3.0",
 
-        "jshint": "2.5.5",
-        "jscs": "1.6.2",
+        "jshint": "2.5.11",
+        "jscs": "1.9.0",
 
-        "mocha": "1.21.4",
+        "mocha": "2.1.0",
         "expect.js": "0.3.1",
-        "sinon": "1.10.3",
+        "sinon": "1.12.2",
 
         "karma": "~0.12.x",
         "karma-mocha": "~0.1.x",
@@ -44,7 +44,7 @@
         "karma-chrome-launcher": "~0.1.x",
         "karma-firefox-launcher": "~0.1.x",
 
-        "webcomponents.js": "Polymer/webcomponentsjs.git"
+        "webcomponents.js": "Katochimoto/webcomponentsjs.git"
     },
     "engines": {
         "node": ">=0.6.0"

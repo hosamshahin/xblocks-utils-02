@@ -1,27 +1,22 @@
 /* global xblocks, global */
 /* jshint strict: false */
 
-xblocks.utils.throttle = function(callback, delay, scope) {
+/**
+ * Выполнение функции не чаще одного раза в указанный период
+ */
+xblocks.utils.throttle = function(callback, delay, context) {
     delay = Number(delay || 250);
-    var last;
-    var timer;
+    var throttle = 0;
 
     return function() {
-        var context = scope || this;
-        var now = Date.now();
-        var args = arguments;
-
-        if (last && now < last + delay) {
-            global.clearTimeout(timer);
-
-            timer = global.setTimeout(function() {
-                last = now;
-                callback.apply(context, args);
-            }, delay);
-
-        } else {
-            last = now;
-            callback.apply(context, args);
+        if (throttle) {
+            return;
         }
+
+        throttle = global.setTimeout(function() {
+            throttle = 0;
+        }, delay);
+
+        callback.apply(context || this, arguments);
     };
 };
