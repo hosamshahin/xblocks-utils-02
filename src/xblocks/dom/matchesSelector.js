@@ -1,14 +1,14 @@
-/* global xblocks, indexOf */
+/* global xblocks, indexOf, global */
 /* jshint strict: false */
 
 xblocks.dom.matchesSelector = (function() {
-    var ElementPrototype = Element.prototype;
-    var matches = ElementPrototype.matches ||
-        ElementPrototype.matchesSelector ||
-        ElementPrototype.webkitMatchesSelector ||
-        ElementPrototype.mozMatchesSelector ||
-        ElementPrototype.msMatchesSelector ||
-        ElementPrototype.oMatchesSelector ||
+    var proto = global.Element.prototype;
+    var matches = proto.matches ||
+        proto.matchesSelector ||
+        proto.webkitMatchesSelector ||
+        proto.mozMatchesSelector ||
+        proto.msMatchesSelector ||
+        proto.oMatchesSelector ||
         function(selector) {
             return (indexOf.call((this.parentNode || this.ownerDocument).querySelectorAll(selector), this) !== -1);
         };
