@@ -376,6 +376,13 @@ xblocks.utils.Table.prototype = {
         return this._item;
     },
 
+    blurItem: function() {
+        if (this._item) {
+            xblocks.event.dispatch(this._item, this.EVENT_BLUR);
+            this._item = undefined;
+        }
+    },
+
     _bind: function() {
         this._node.addEventListener('keydown', this._onKeydown, false);
         this._node.addEventListener('click', this._onClick, false);
